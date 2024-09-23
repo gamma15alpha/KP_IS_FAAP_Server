@@ -35,6 +35,13 @@ kotlin {
 	}
 }
 
+//tasks.withType<Jar> {
+//	archiveBaseName.set("myapp")
+//	archiveVersion.set("0.0.1")
+//}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+
