@@ -13,7 +13,7 @@ class StudentRepository{
         return STUDENTS
     }
 
-    fun findStudentById(id: UUID): StudentModel? {
+    fun findStudentById(id: Long): StudentModel? {
         return STUDENTS.stream().filter{element -> element.id == id}.findFirst().orElse(null)
     }
 
@@ -22,7 +22,7 @@ class StudentRepository{
         return student
     }
 
-    fun updateStudent(id: UUID, student: StudentModel): StudentModel? {
+    fun updateStudent(id: Long, student: StudentModel): StudentModel? {
         val studentIndex = IntStream.range(0, STUDENTS.size - 1)
             .filter { i -> STUDENTS[i].id == id }
             .findFirst()
@@ -34,7 +34,7 @@ class StudentRepository{
         return student
     }
 
-    fun deleteStudent(id: UUID): Boolean {
+    fun deleteStudent(id: Long): Boolean {
         val studentIndex = findStudentById(id) ?: return false
         STUDENTS.remove(studentIndex)
         return true

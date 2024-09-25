@@ -36,13 +36,13 @@ services:
     environment:
       POSTGRES_DB: "kpdb"
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "pgpwd4"
+      POSTGRES_PASSWORD: "postgres"
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ../2. Init Database:/docker-entrypoint-initdb.d
-      - kpdb-data:/var/lib/postgresql/data
+      - kp-data:/var/lib/postgresql/data
     ports:
-      - "5434:5434"
+      - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d kpdb"]
       interval: 10s
@@ -62,8 +62,8 @@ services:
     container_name: pgadmin_container
     image: dpage/pgadmin4:7.2
     environment:
-      PGADMIN_DEFAULT_EMAIL: "gamma15alpha@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "pgpwd4"
+      PGADMIN_DEFAULT_EMAIL: "postgres@kpdb.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadminpwd4kpdb"
       PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
       - pgadmin-data:/var/lib/pgadmin
@@ -84,7 +84,7 @@ services:
     environment:
       DATA_SOURCE_URI: "postgres:5432/kpdb?sslmode=disable"
       DATA_SOURCE_USER: "postgres"
-      DATA_SOURCE_PASS: "pgpwd4"
+      DATA_SOURCE_PASS: "postgres"
       PG_EXPORTER_EXTEND_QUERY_PATH: "/etc/postgres_exporter/queries.yaml"
     volumes:
       - ./queries.yaml:/etc/postgres_exporter/queries.yaml:ro
@@ -99,14 +99,8 @@ services:
     networks:
       - postgres
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
-
 volumes:
-  kpdb-data:
+  kp-data:
   pgadmin-data:
 
 networks:

@@ -14,7 +14,7 @@ class InMemoryStudentImpl(
         return studentRepository.getAllStudents()
     }
 
-    override fun findStudentById(id: UUID): StudentModel? {
+    override fun findStudentById(id: Long): StudentModel? {
         return studentRepository.findStudentById(id)
     }
 
@@ -22,11 +22,11 @@ class InMemoryStudentImpl(
         return studentRepository.createStudent(student)
     }
 
-    override fun updateStudent(id: UUID, student: StudentModel): StudentModel? {
+    override fun updateStudent(id: Long, student: StudentModel): StudentModel? {
         return studentRepository.updateStudent(id, student)
     }
 
-    override fun deleteStudent(id: UUID): Boolean {
+    override fun deleteStudent(id: Long): Boolean {
         return studentRepository.deleteStudent(id)
     }
 }

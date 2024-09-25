@@ -5,8 +5,8 @@ import java.util.*
 
 interface StudentService {
     fun getAllStudents(): List<StudentModel>
-    fun findStudentById(id: UUID): StudentModel?
+    fun findStudentById(id: Long): StudentModel?
     fun createStudent(student: StudentModel): StudentModel
-    fun updateStudent(id: UUID, student: StudentModel): StudentModel?
-    fun deleteStudent(id: UUID): Boolean
+    fun updateStudent(id: Long, student: StudentModel): StudentModel?
+    fun deleteStudent(id: Long): Boolean
 }
