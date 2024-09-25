@@ -35,7 +35,10 @@ class StudentController(@Autowired private val studentService: StudentService) {
         studentService.createStudent(StudentModel(
             name = name,
             email = email,
-            password = password
+            password = password,
+            premetModel = null,
+            facultyModel = null,
+            personalDataModel = null
         ))
         return "redirect:/api/student"
     }

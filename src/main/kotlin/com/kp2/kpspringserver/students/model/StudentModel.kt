@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor
 import lombok.Getter
 import lombok.NoArgsConstructor
 import lombok.Setter
-import java.util.UUID
 
 @Getter
 @Setter
@@ -20,5 +19,14 @@ data class StudentModel(
     val name: String,
     @Column(unique = true)
     val email: String,
-    val password: String
+    val password: String,
+
+    @OneToOne(cascade = [CascadeType.ALL])
+    val personalDataModel: PersonalDataModel?,
+
+    @ManyToOne(cascade = [CascadeType.ALL])
+    val facultyModel: FacultyModel?,
+
+    @ManyToMany(cascade = [CascadeType.ALL])
+    val premetModel: List<PremetModel>?,
 )
