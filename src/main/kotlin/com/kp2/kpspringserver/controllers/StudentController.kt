@@ -5,10 +5,9 @@ import com.kp2.kpspringserver.students.service.StudentService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.*
 
 @Controller
 @RequestMapping("/api/student")
@@ -28,18 +27,16 @@ class StudentController(@Autowired private val studentService: StudentService) {
 
     @PostMapping("/create")
     fun postCreateStudent(
-        @RequestParam(value = "name") name: String,
-        @RequestParam(value = "email") email: String,
-        @RequestParam(value = "password") password: String
+        @Validated
+        @ModelAttribute("studentModel")
+        student: StudentModel,
+
+        result: BindingResult,
     ): String {
-        studentService.createStudent(StudentModel(
-            name = name,
-            email = email,
-            password = password,
-            premetModel = null,
-            facultyModel = null,
-            personalDataModel = null
-        ))
+        if (result.hasErrors()) {
+            return "create-student"
+        }
+        studentService.createStudent(student)
         return "redirect:/api/student"
     }
 }
