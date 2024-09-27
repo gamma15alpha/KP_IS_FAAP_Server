@@ -2,14 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
 </head>
 <body>
-    <form action="/api/student/create" method="post">
-        <input type="text" name="name" placeholder="имя" required>
-        <input type="text" name="email" placeholder="email" required>
-        <input type="text" name="password" placeholder="пароль" required>
-        <button type="submit">Добавить</button>
-    </form>
+<h1>Добавить студента</h1>
+<form action="/api/student/create" method="post">
+    <!-- Поле для имени -->
+    <div>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" placeholder="Имя" required>
+    </div>
+
+    <!-- Поле для email -->
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Email" required>
+    </div>
+
+    <!-- Поле для пароля -->
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" placeholder="Пароль" required>
+    </div>
+
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Добавить</button>
+</form>
 </body>
 </html>
