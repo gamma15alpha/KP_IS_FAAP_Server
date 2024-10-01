@@ -34,6 +34,10 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+//	implementation("org.springframework.boot:spring-boot-starter-security")
+//	implementation("org.springframework.security:spring-security-crypto")
+
+
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.4")
 	implementation("org.postgresql:postgresql")
 
