@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание студента</title>
+</head>
+<body>
+<h1>Создание студента</h1>
+<form action="/students/create" method="post">
+    <label for="admissionDate">Дата зачисления:</label>
+    <input type="date" id="admissionDate" name="admissionDate" required /><br/>
+
+    <label for="deductionDate">Дата отчисления:</label>
+    <input type="date" id="deductionDate" name="deductionDate" required /><br/>
+
+    <label for="status">Статус:</label>
+    <select id="status" name="status" required>
+        <option value="">Выберите статус</option>
+        <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.name}"></option>
+    </select><br/>
+
+    <label for="group">Группа:</label>
+    <select id="group" name="group" required>
+        <option value="">Выберите группу</option>
+        <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
+    </select><br/>
+
+    <input type="submit" value="Создать" />
+</form>
+<a href="/students">Назад к списку</a>
+</body>
+</html>

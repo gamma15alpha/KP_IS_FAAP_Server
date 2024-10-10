@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Изменить тип образовательной деятельности</title>
+</head>
+<body>
+<h1>Изменить тип образовательной деятельности</h1>
+<form th:action="@{/educational-activity-types/edit}" th:object="${activityType}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <label for="name">Название:</label>
+  <input type="text" id="name" th:field="*{name}" required />
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Название обязательно</div>
+  <button type="submit">Сохранить изменения</button>
+</form>
+<a href="/educational-activity-types">Назад к списку</a>
+</body>
+</html>

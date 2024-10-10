@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать образовательную активность</title>
+</head>
+<body>
+<h1>Редактировать образовательную активность</h1>
+<form th:action="@{/educational-activities/edit/{id}(id=${activity.id})}" method="post" th:object="${activity}">
+    <label for="date">Дата:</label>
+    <input type="date" id="date" th:field="*{date}" required />
+    <br />
+    <label for="type">Тип:</label>
+    <select id="type" th:field="*{type}" required>
+        <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+    </select>
+    <br />
+    <button type="submit">Сохранить изменения</button>
+</form>
+<br />
+<a href="/educational-activities">Назад к списку</a>
+</body>
+</html>

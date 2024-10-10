@@ -1,5 +1,6 @@
 package com.kp2.kpspringserver.controllers
 
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
+@PreAuthorize("hasRole('ADMIN')")
 class CurrencyConverterController {
 
     @GetMapping("/currency-converter")
@@ -29,11 +31,10 @@ class CurrencyConverterController {
     }
 
     private fun getExchangeRate(fromCurrency: String, toCurrency: String): Double {
-        if (fromCurrency.equals("USD", ignoreCase = true) && toCurrency.equals("RUB", ignoreCase = true)) {
-            return 100.0
-        }
-        else{
-            return 0.01
+        return if (fromCurrency.equals("USD", ignoreCase = true) && toCurrency.equals("RUB", ignoreCase = true)) {
+            100.0
+        } else{
+            0.01
         }
     }
 }

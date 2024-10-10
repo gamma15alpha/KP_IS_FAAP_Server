@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать задачу</title>
+</head>
+<body>
+<h1>Редактировать задачу</h1>
+<form th:action="@{/tasks/edit/{id}(id=${task.id})}" method="post" th:object="${task}">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" th:field="*{title}" required /><br/>
+
+    <label for="description">Описание:</label>
+    <textarea id="description" th:field="*{description}" required></textarea><br/>
+
+    <label for="dueDate">Срок выполнения:</label>
+    <input type="date" id="dueDate" th:field="*{dueDate}" required /><br/>
+
+    <label for="deadline">Крайний срок:</label>
+    <input type="date" id="deadline" th:field="*{deadline}" required /><br/>
+
+    <label for="status">Статус:</label>
+    <select id="status" th:field="*{status.id}" required>
+        <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"></option>
+    </select><br/>
+
+    <label for="educationalActivity">Образовательная активность:</label>
+    <select id="educationalActivity" th:field="*{educationalActivity.id}" required>
+        <option th:each="activity : ${educationalActivities}" th:value="${activity.id}" th:text="${activity.title}"></option>
+    </select><br/>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+<br />
+<a href="/tasks">Назад к списку</a>
+</body>
+</html>

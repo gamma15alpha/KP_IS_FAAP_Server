@@ -24,6 +24,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
+	testImplementation("org.springframework.security:spring-security-test")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -34,12 +37,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-//	implementation("org.springframework.boot:spring-boot-starter-security")
-//	implementation("org.springframework.security:spring-security-crypto")
-
-
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.4")
 	implementation("org.postgresql:postgresql")
+
+	implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

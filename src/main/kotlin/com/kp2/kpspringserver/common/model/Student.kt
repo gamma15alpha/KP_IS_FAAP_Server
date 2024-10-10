@@ -21,7 +21,10 @@ data class Student(
     var status: StudentStatus? = null,
     @ManyToOne
     var group: Group? = null,
+
+    @OneToMany()
+    var representatives: List<User>?
 )
 {
-    constructor(): this(null,null,null,null,null,null,null)
+    constructor(): this(null,null,null,null,null,null,null, null)
 }

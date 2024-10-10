@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Roles</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 48%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>User Roles</h1>
+
+<div class="container">
+    <!-- Active Roles Table -->
+    <form th:action="@{/user-roles/delete}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAll" /></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="role : ${roles.content}" th:if="${!role.isDeleted}">
+                <td><input type="checkbox" name="ids" th:value="${role.id}"/></td>
+                <td th:text="${role.id}"></td>
+                <td th:text="${role.name}"></td>
+                <td th:text="${role.status}"></td>
+                <td>
+                    <a th:href="@{/user-roles/edit/{id}(id=${role.id})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Delete Selected</button>
+    </form>
+
+    <!-- Deleted Roles Table -->
+    <form th:action="@{/user-roles/restore}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAllRestore" /></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="role : ${roles.content}" th:if="${role.isDeleted}">
+                <td><input type="checkbox" name="ids" th:value="${role.id}"/></td>
+                <td th:text="${role.id}"></td>
+                <td th:text="${role.name}"></td>
+                <td th:text="${role.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Restore Selected</button>
+    </form>
+</div>
+
+<div>
+    <span>Page: </span>
+    <span th:text="${roles.number + 1}"></span>
+    <span> of </span>
+    <span th:text="${roles.totalPages}"></span>
+</div>
+
+<div>
+    <a th:href="@{/user-roles/add}">Add Role</a>
+</div>
+
+<script>
+    document.getElementById('selectAll').onclick = function () {
+        const checkboxes = document.querySelectorAll('input[name="ids"]');
+        checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+    };
+
+    document.getElementById('selectAllRestore').onclick = function () {
+        const checkboxes = document.querySelectorAll('input[name="ids"]');
+        checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+    };
+</script>
+
+</body>
+</html>
