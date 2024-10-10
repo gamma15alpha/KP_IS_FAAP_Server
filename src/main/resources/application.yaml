@@ -1,0 +1,18 @@
+spring:
+  config:
+    name: kpSpringServer
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testBD
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: on
+
+servlet:
+  session:
+    timeout: 5m

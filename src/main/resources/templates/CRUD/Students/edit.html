@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактировать студента</title>
+</head>
+<body>
+<h1>Редактировать студента</h1>
+<form th:action="@{/students/edit/{id}(id=${student.id})}" method="post" th:object="${student}">
+  <label for="admissionDate">Дата зачисления:</label>
+  <input type="date" id="admissionDate" th:field="*{admissionDate}" required /><br/>
+
+  <label for="deductionDate">Дата отчисления:</label>
+  <input type="date" id="deductionDate" th:field="*{deductionDate}" required /><br/>
+
+  <label for="status">Статус:</label>
+  <select id="status" th:field="*{status}" required>
+    <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.name}"></option>
+  </select><br/>
+
+  <label for="group">Группа:</label>
+  <select id="group" th:field="*{group}" required>
+    <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
+  </select><br/>
+
+  <button type="submit">Сохранить изменения</button>
+</form>
+<br />
+<a href="/students">Назад к списку</a>
+</body>
+</html>

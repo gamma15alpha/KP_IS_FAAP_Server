@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать статус задачи</title>
+</head>
+<body>
+<h1>Редактировать статус задачи</h1>
+<form th:action="@{/task-statuses/edit/{id}(id=${taskStatus.id})}" method="post" th:object="${taskStatus}">
+    <label for="status">Статус:</label>
+    <input type="text" id="status" th:field="*{status}" required /><br/>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+<br />
+<a href="/task-statuses">Назад к списку</a>
+</body>
+</html>

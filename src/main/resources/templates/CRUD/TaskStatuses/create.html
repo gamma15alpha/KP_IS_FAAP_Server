@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание задачи</title>
+</head>
+<body>
+<h1>Создание задачи</h1>
+<form action="/tasks/create" method="post">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" name="title" required /><br/>
+
+    <label for="description">Описание:</label>
+    <textarea id="description" name="description" required></textarea><br/>
+
+    <label for="dueDate">Срок выполнения:</label>
+    <input type="date" id="dueDate" name="dueDate" required /><br/>
+
+    <label for="deadline">Крайний срок:</label>
+    <input type="date" id="deadline" name="deadline" required /><br/>
+
+    <label for="status">Статус:</label>
+    <select id="status" name="status.id" required>
+        <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"></option>
+    </select><br/>
+
+    <label for="educationalActivity">Образовательная активность:</label>
+    <select id="educationalActivity" name="educationalActivity.id" required>
+        <option th:each="activity : ${educationalActivities}" th:value="${activity.id}" th:text="${activity.title}"></option>
+    </select><br/>
+
+    <input type="submit" value="Создать" />
+</form>
+<a href="/tasks">Назад к списку</a>
+</body>
+</html>

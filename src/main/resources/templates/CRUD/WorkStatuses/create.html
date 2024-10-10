@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание статуса работы</title>
+</head>
+<body>
+<h1>Создание статуса работы</h1>
+<form action="/work-statuses/create" method="post">
+    <label for="status">Статус:</label>
+    <input type="text" id="status" name="status" required /><br/>
+
+    <input type="submit" value="Создать" />
+</form>
+<a href="/work-statuses">Назад к списку</a>
+</body>
+</html>

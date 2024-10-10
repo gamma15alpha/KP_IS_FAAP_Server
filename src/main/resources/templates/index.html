@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Главная страница</h1>
+    <a href="/calculator">Калькулятор</a><br>
+    <a href="/currency-converter">Конвертер валют</a><br>
+    <a href="/AdminCRUD">Админ Панель</a><br>
+    <a href="/ModeratorCRUD">Модер Панель</a><br>
+    <br><br>
+
+    <sec:authorize access="!isAuthenticated()">
+        <a href="/register">Регистрация</a><br>
+        <a href="/login">Авторизация</a><br>
+    </sec:authorize>
+
+    <sec:authorize access="isAuthenticated()">
+        <a href="/logout">Выход</a>
+    </sec:authorize>
+</body>
+</html>

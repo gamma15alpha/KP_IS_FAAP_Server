@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание работы</title>
+</head>
+<body>
+<h1>Создание работы</h1>
+<form action="/works/create" method="post">
+    <label for="title">Заголовок:</label>
+    <input type="text" id="title" name="title" required /><br/>
+
+    <label for="description">Описание:</label>
+    <textarea id="description" name="description" required></textarea><br/>
+
+    <label for="mark">Оценка:</label>
+    <input type="number" id="mark" name="mark" required /><br/>
+
+    <label for="date">Дата:</label>
+    <input type="date" id="date" name="date" required /><br/>
+
+    <label for="student">Студент:</label>
+    <select id="student" name="student.id" required>
+        <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}"></option>
+    </select><br/>
+
+    <label for="status">Статус работы:</label>
+    <select id="status" name="status.id" required>
+        <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.status}"></option>
+    </select><br/>
+
+    <label for="task">Задача:</label>
+    <select id="task" name="task.id" required>
+        <option th:each="task : ${tasks}" th:value="${task.id}" th:text="${task.title}"></option>
+    </select><br/>
+
+    <input type="submit" value="Создать" />
+</form>
+<a href="/works">Назад к списку</a>
+</body>
+</html>

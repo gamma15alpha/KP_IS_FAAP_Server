@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Регистрация</title>
+</head>
+<body>
+<h1>Регистрация</h1>
+<form action="#" th:action="@{/register}" th:object="${registrationForm}" method="post">
+    <div>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" th:field="*{username}" />
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Ошибка!</div>
+    </div>
+
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" th:field="*{password}" />
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Ошибка!</div>
+    </div>
+
+    <div>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" th:field="*{firstName}" />
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Ошибка!</div>
+    </div>
+
+    <div>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" />
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Ошибка!</div>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" th:field="*{email}" />
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Ошибка!</div>
+    </div>
+
+    <div>
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" th:field="*{phone}" />
+        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Ошибка!</div>
+    </div>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<div th:if="${param.error}" style="color: red;">Ошибка при регистрации!</div>
+</body>
+</html>
